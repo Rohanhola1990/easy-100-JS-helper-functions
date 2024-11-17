@@ -1,338 +1,104 @@
-** 1. Remove duplicates from an array **
-const removeDuplicates = arr => [...new Set(arr)];
-
-** 2. Chunk an array into smaller arrays **
-const chunkArray = (arr, size) => arr.reduce((acc, _, i) => (i % size ? acc : [...acc, arr.slice(i, i + size)]), []);
-
-** 3. Flatten a nested array **
-const flattenArray = arr => arr.flat(Infinity);
-
-** 4. Shuffle elements in an array **
-const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);
-
-** 5. Find duplicates in an array **
-const findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) !== index);
-
-** 6. Get the intersection of two arrays **
-const arrayIntersection = (arr1, arr2) => arr1.filter(item => arr2.includes(item));
-
-** 7. Get the difference of two arrays **
-const arrayDifference = (arr1, arr2) => arr1.filter(item => !arr2.includes(item));
-
-** 8. Get the union of two arrays **
-const arrayUnion = (arr1, arr2) => [...new Set([...arr1, ...arr2])];
-
-** 9. Check if an array is empty **
-const isArrayEmpty = arr => arr.length === 0;
-
-** 10. Check if all elements in an array are unique **
-const isArrayUnique = arr => new Set(arr).size === arr.length;
-
-** 11. Sum elements in an array **
-const sumArray = arr => arr.reduce((sum, num) => sum + num, 0);
-
-** 12. Find the max value in an array **
-const maxInArray = arr => Math.max(...arr);
-
-** 13. Find the min value in an array **
-const minInArray = arr => Math.min(...arr);
-
-** 14. Convert an array to an object with keys **
-const arrayToObject = (arr, key) => Object.fromEntries(arr.map(item => [item[key], item]));
-
-** 15. Find the most frequent element in an array **
-const mostFrequent = arr => arr.reduce((acc, curr) => (acc[curr] = (acc[curr] || 0) + 1) && acc, {});
-
-** 16. Rotate an array by k steps **
-const rotateArray = (arr, k) => [...arr.slice(-k), ...arr.slice(0, -k)];
-
-** 17. Remove falsy values from an array **
-const removeFalsyValues = arr => arr.filter(Boolean);
-
-** 18. Group elements in an array by a key **
-const groupBy = (arr, key) => arr.reduce((acc, item) => ((acc[item[key]] = acc[item[key]] || []).push(item), acc), {});
-
-** 19. Check if an array contains a value **
-const containsValue = (arr, value) => arr.includes(value);
-
-** 20. Reverse an array **
-const reverseArray = arr => [...arr].reverse();
-
-** 21. Capitalize the first letter of a string **
-const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
-
-** 22. Convert a string to kebab case **
-const toKebabCase = str => str.replace(/\s+/g, '-').toLowerCase();
-
-** 23. Convert a string to camel case **
-const toCamelCase = str => str.replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''));
-
-** 24. Convert a string to snake case **
-const toSnakeCase = str => str.replace(/\s+/g, '_').toLowerCase();
-
-** 25. Reverse a string **
-const reverseString = str => str.split('').reverse().join('');
-
-** 26. Check if a string is a palindrome **
-const isPalindrome = str => str === str.split('').reverse().join('');
-
-** 27. Count vowels in a string **
-const countVowels = str => (str.match(/[aeiou]/gi) || []).length;
-
-** 28. Truncate a string **
-const truncateString = (str, length) => (str.length > length ? `${str.slice(0, length)}...` : str);
-
-** 29. Repeat a string n times **
-const repeatString = (str, n) => str.repeat(n);
-
-** 30. Remove spaces from a string **
-const removeSpaces = str => str.replace(/\s+/g, '');
-
-** 31. Generate a random string of a given length **
-const randomString = length => Math.random().toString(36).substring(2, 2 + length);
-
-** 32. Get a string between two characters **
-const getStringBetween = (str, start, end) => str.split(start)[1].split(end)[0];
-
-** 33. Replace all occurrences of a substring **
-const replaceAll = (str, find, replace) => str.split(find).join(replace);
-
-** 34. Convert a string to title case **
-const toTitleCase = str => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase());
-
-** 35. Check if a string contains a substring **
-const containsSubstring = (str, substring) => str.includes(substring);
-
-** 36. Get a random element from an array **
-const randomElement = arr => arr[Math.floor(Math.random() * arr.length)];
-
-** 37. Calculate the factorial of a number **
-const factorial = num => (num <= 1 ? 1 : num * factorial(num - 1));
-
-** 38. Generate a random number in a range **
-const randomInRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
-
-** 39. Check if a number is even **
-const isEven = num => num % 2 === 0;
-
-** 40. Check if a number is odd **
-const isOdd = num => num % 2 !== 0;
-
-** 41. Round a number to n decimal places **
-const roundTo = (num, decimals) => Number(num.toFixed(decimals));
-
-** 42. Calculate the power of a number **
-const power = (base, exponent) => Math.pow(base, exponent);
-
-** 43. Find the greatest common divisor (GCD) **
-const gcd = (a, b) => (!b ? a : gcd(b, a % b));
-
-** 44. Find the least common multiple (LCM) **
-const lcm = (a, b) => (a * b) / gcd(a, b);
-
-** 45. Check if a number is prime **
-const isPrime = num => num > 1 && Array.from({ length: num - 2 }, (_, i) => i + 2).every(n => num % n !== 0);
-
-** 46. Generate a random color **
-const randomColor = () => `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-
-** 47. Get query parameters from a URL **
-const getQueryParams = url => Object.fromEntries(new URL(url).searchParams.entries());
-
-** 48. Deep clone an object **
-const deepClone = obj => JSON.parse(JSON.stringify(obj));
-
-** 49. Merge two objects **
-const mergeObjects = (obj1, obj2) => ({ ...obj1, ...obj2 });
-
-** 50. Check if an object is empty **
-const isObjectEmpty = obj => Object.keys(obj).length === 0;
-
-** 51. Get the keys of an object **
-const getObjectKeys = obj => Object.keys(obj);
-
-** 52. Get the values of an object **
-const getObjectValues = obj => Object.values(obj);
-
-** 53. Get the entries of an object **
-const getObjectEntries = obj => Object.entries(obj);
-
-** 54. Check if a key exists in an object **
-const hasKey = (obj, key) => Object.prototype.hasOwnProperty.call(obj, key);
-
-** 55. Convert an object to query string **
-const objectToQueryString = obj => new URLSearchParams(obj).toString();
-
-** 56. Freeze an object **
-const freezeObject = obj => Object.freeze(obj);
-
-** 57. Seal an object **
-const sealObject = obj => Object.seal(obj);
-
-** 58. Convert an array to a CSV string **
-const arrayToCSV = arr => arr.map(row => row.join(',')).join('\n');
-
-** 59. Parse a CSV string to an array **
-const csvToArray = csv => csv.split('\n').map(row => row.split(','));
-
-** 60. Check if a date is valid **
-const isValidDate = date => !isNaN(new Date(date).getTime());
-
-** 61. Format a date to YYYY-MM-DD **
-const formatDate = date => new Date(date).toISOString().split('T')[0];
-
-** 62. Get the difference in days between two dates **
-const daysBetweenDates = (date1, date2) => Math.ceil((new Date(date2) - new Date(date1)) / (1000 * 60 * 60 * 24));
-
-** 63. Add days to a date **
-const addDays = (date, days) => new Date(new Date(date).setDate(new Date(date).getDate() + days));
-
-** 64. Get the current timestamp **
-const getTimestamp = () => Date.now();
-
-** 65. Convert a timestamp to a date **
-const timestampToDate = timestamp => new Date(timestamp).toLocaleDateString();
-
-** 66. Check if a year is a leap year **
-const isLeapYear = year => (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-
-** 67. Get the day of the week from a date **
-const getDayOfWeek = date => new Date(date).toLocaleString('en-US', { weekday: 'long' });
-
-** 68. Check if a DOM element is visible **
-const isVisible = el => !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
-
-** 69. Smooth scroll to an element **
-const smoothScrollTo = id => document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-
-** 70. Get the computed style of an element **
-const getStyle = (el, prop) => window.getComputedStyle(el).getPropertyValue(prop);
-
-** 71. Toggle a class on an element **
-const toggleClass = (el, className) => el.classList.toggle(className);
-
-** 72. Create a new DOM element **
-const createElement = (tag, attrs = {}, ...children) => {
-  const el = document.createElement(tag);
-  Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
-  children.forEach(child => el.appendChild(child instanceof Node ? child : document.createTextNode(child)));
-  return el;
-};
-
-** 73. Remove all children of an element **
-const clearChildren = el => { while (el.firstChild) el.removeChild(el.firstChild); };
-
-** 74. Get the scroll position of an element **
-const getScrollPosition = el => ({ top: el.scrollTop, left: el.scrollLeft });
-
-** 75. Debounce a function **
-const debounce = (func, wait) => {
-  let timeout;
-  return (...args) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(this, args), wait);
-  };
-};
-
-** 76. Throttle a function **
-const throttle = (func, limit) => {
-  let inThrottle;
-  return (...args) => {
-    if (!inThrottle) {
-      func.apply(this, args);
-      inThrottle = true;
-      setTimeout(() => (inThrottle = false), limit);
-    }
-  };
-};
-
-** 77. Copy text to clipboard **
-const copyToClipboard = text => navigator.clipboard.writeText(text);
-
-** 78. Check if an element has a specific class **
-const hasClass = (el, className) => el.classList.contains(className);
-
-** 79. Get a random boolean value **
-const randomBoolean = () => Math.random() >= 0.5;
-
-** 80. Generate a UUID **
-const generateUUID = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
-  const r = (Math.random() * 16) | 0;
-  return c === 'x' ? r.toString(16) : ((r & 0x3) | 0x8).toString(16);
-});
-
-** 81. Deep freeze an object **
-const deepFreeze = obj => {
-  Object.keys(obj).forEach(name => typeof obj[name] === 'object' && deepFreeze(obj[name]));
-  return Object.freeze(obj);
-};
-
-** 82. Get the type of a variable **
-const getType = value => Object.prototype.toString.call(value).slice(8, -1);
-
-** 83. Check if a variable is null or undefined **
-const isNullOrUndefined = value => value === null || value === undefined;
-
-** 84. Convert a number to a currency string **
-const toCurrency = (num, locale = 'en-US', currency = 'USD') => num.toLocaleString(locale, { style: 'currency', currency });
-
-** 85. Get a random hexadecimal color **
-const randomHexColor = () => `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
-
-** 86. Check if a string starts with a capital letter **
-const startsWithCapital = str => /^[A-Z]/.test(str);
-
-** 87. Remove HTML tags from a string **
-const stripHtmlTags = str => str.replace(/<[^>]*>/g, '');
-
-** 88. Check if a string is a valid URL **
-const isValidUrl = str => {
-  try {
-    new URL(str);
-    return true;
-  } catch {
-    return false;
-  }
-};
-
-** 89. Get the current URL **
-const getCurrentUrl = () => window.location.href;
-
-** 90. Calculate the percentage of a number **
-const calculatePercentage = (partial, total) => (total === 0 ? 0 : (partial / total) * 100).toFixed(2);
-
-** 91. Check if a number is within a range **
-const isInRange = (num, min, max) => num >= min && num <= max;
-
-** 92. Convert degrees to radians **
-const toRadians = degrees => (degrees * Math.PI) / 180;
-
-** 93. Convert radians to degrees **
-const toDegrees = radians => (radians * 180) / Math.PI;
-
-** 94. Get a random date within a range **
-const randomDate = (start, end) => new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-
-** 95. Capitalize every word in a string **
-const capitalizeWords = str => str.replace(/\b\w/g, char => char.toUpperCase());
-
-** 96. Get the nth Fibonacci number **
-const fibonacci = n => (n <= 1 ? n : fibonacci(n - 1) + fibonacci(n - 2));
-
-** 97. Remove duplicates from an array of objects based on a key **
-const uniqueByKey = (arr, key) => [...new Map(arr.map(item => [item[key], item])).values()];
-
-** 98. Parse a JSON string safely **
-const safeJsonParse = str => {
-  try {
-    return JSON.parse(str);
-  } catch {
-    return null;
-  }
-};
-
-** 99. Check if a variable is an array **
-const isArray = value => Array.isArray(value);
-
-** 100. Get the last element of an array **
-const lastElement = arr => arr[arr.length - 1];
+# 100 easy JS helper functions
+
+| **#** | **Description** | **Function** |
+| --- | --- | --- |
+| 1. | Remove duplicates from an array | `const removeDuplicates = arr => [...new Set(arr)];` |
+| 2. | Check if a number is even | `const isEven = num => num % 2 === 0;` |
+| 3. | Find the maximum number in an array | `const findMax = arr => Math.max(...arr);` |
+| 4. | Reverse a string | `const reverseString = str => str.split('').reverse().join('');` |
+| 5. | Capitalize the first letter of a string | `const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);` |
+| 6. | Generate a random number between two values | `const randomBetween = (min, max) => Math.random() * (max - min) + min;` |
+| 7. | Check if a string is a palindrome | `const isPalindrome = str => str === str.split('').reverse().join('');` |
+| 8. | Convert a string to camelCase | `const toCamelCase = str => str.replace(/([-_][a-z])/g, group => group.toUpperCase().replace('-', '').replace('_', ''));` |
+| 9. | Flatten a nested array | `const flattenArray = arr => arr.flat(Infinity);` |
+| 10. | Get the current timestamp | `const getTimestamp = () => Date.now();` |
+| 11. | Convert an object to a query string | `const toQueryString = obj => Object.entries(obj).map(([key, val]) => \`\${key}=\${val}\`).join('&');` |
+| 12. | Debounce a function | `const debounce = (func, delay) => { let timer; return (...args) => { clearTimeout(timer); timer = setTimeout(() => func(...args), delay); }; };` |
+| 13. | Throttle a function | `const throttle = (func, limit) => { let lastFunc; let lastRan; return function(...args) { if (!lastRan) { func(...args); lastRan = Date.now(); } else { clearTimeout(lastFunc); lastFunc = setTimeout(() => { if ((Date.now() - lastRan) >= limit) { func(...args); lastRan = Date.now(); } }, limit - (Date.now() - lastRan)); } }; };` |
+| 14. | Get a random element from an array | `const randomElement = arr => arr[Math.floor(Math.random() * arr.length)];` |
+| 15. | Count occurrences of elements in an array | `const countOccurrences = arr => arr.reduce((acc, curr) => (acc[curr] = ++acc[curr] || 1, acc), {});` |
+| 16. | Check if two arrays are equal | `const arraysEqual = (arr1, arr2) => JSON.stringify(arr1) === JSON.stringify(arr2);` |
+| 17. | Shuffle an array | `const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);` |
+| 18. | Convert RGB to Hex | `const rgbToHex = (r, g, b) => "#" + [r, g, b].map(x => x.toString(16).padStart(2, "0")).join("");` |
+| 19. | Convert Hex to RGB | `const hexToRgb = hex => { const bigint = parseInt(hex.slice(1), 16); return [bigint >> 16 & 255, bigint >> 8 & 255, bigint & 255]; };` |
+| 20. | Check if a value is an object | `const isObject = val => val && typeof val === 'object' && !Array.isArray(val);` |
+| 21. | Deep clone an object | `const deepClone = obj => JSON.parse(JSON.stringify(obj));` |
+| 22. | Merge two objects | `const mergeObjects = (obj1, obj2) => ({ ...obj1, ...obj2 });` |
+| 23. | Check if an object is empty | `const isEmptyObject = obj => Object.keys(obj).length === 0;` |
+| 24. | Capitalize the first letter of a string | `const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);` |
+| 25. | Reverse a string | `const reverseString = str => str.split('').reverse().join('');` |
+| 26. | Count vowels in a string | `const countVowels = str => (str.match(/[aeiou]/gi) || []).length;` |
+| 27. | Generate a random string | `const randomString = length => Math.random().toString(36).substr(2, length);` |
+| 28. | Check if a string is a palindrome | `const isPalindrome = str => { const cleaned = str.toLowerCase().replace(/[^a-z]/g, ''); return cleaned === cleaned.split('').reverse().join(''); };` |
+| 29. | Flatten a nested array | `const flattenArray = arr => arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? flattenArray(val) : val), []);` |
+| 30. | Get unique values from an array | `const uniqueValues = arr => [...new Set(arr)];` |
+| 31. | Get the max value in an array | `const maxInArray = arr => Math.max(...arr);` |
+| 32. | Get the min value in an array | `const minInArray = arr => Math.min(...arr);` |
+| 33. | Remove falsy values from an array | `const removeFalsy = arr => arr.filter(Boolean);` |
+| 34. | Generate a range of numbers | `const range = (start, end) => Array.from({ length: end - start + 1 }, (_, i) => start + i);` |
+| 35. | Chunk an array | `const chunkArray = (arr, size) => { const result = []; for (let i = 0; i < arr.length; i += size) { result.push(arr.slice(i, i + size)); } return result; };` |
+| 36. | Find the intersection of two arrays | `const intersectArrays = (arr1, arr2) => arr1.filter(val => arr2.includes(val));` |
+| 37. | Find the difference between two arrays | `const diffArrays = (arr1, arr2) => arr1.filter(val => !arr2.includes(val));` |
+| 38. | Get the current timestamp | `const currentTimestamp = () => Date.now();` |
+| 39. | Format a date to `YYYY-MM-DD` | `const formatDate = date => date.toISOString().split('T')[0];` |
+| 40. | Check if a year is a leap year | `const isLeapYear = year => year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);` |
+| 41. | Calculate the factorial of a number | `const factorial = n => (n <= 1 ? 1 : n * factorial(n - 1));` |
+| 42. | Find the Fibonacci sequence up to `n` | `const fibonacci = n => { const seq = [0, 1]; for (let i = 2; i < n; i++) { seq.push(seq[i - 1] + seq[i - 2]); } return seq; };` |
+| 43. | Check if a number is prime | `const isPrime = num => { if (num <= 1) return false; for (let i = 2; i <= Math.sqrt(num); i++) { if (num % i === 0) return false; } return true; };` |
+| 44. | Find the greatest common divisor (GCD) | `const gcd = (a, b) => (!b ? a : gcd(b, a % b));` |
+| 45. | Find the least common multiple (LCM) | `const lcm = (a, b) => (a * b) / gcd(a, b);` |
+| 46. | Round a number to `n` decimal places | `const roundTo = (num, decimals) => Number(Math.round(num + 'e' + decimals) + 'e-' + decimals);` |
+| 47. | Convert degrees to radians | `const degreesToRadians = degrees => (degrees * Math.PI) / 180;` |
+| 48. | Convert radians to degrees | `const radiansToDegrees = radians => (radians * 180) / Math.PI;` |
+| 49. | Generate a random number within a range | `const randomInRange = (min, max) => Math.random() * (max - min) + min;` |
+| 50. | Shuffle an array | `const shuffleArray = arr => arr.sort(() => Math.random() - 0.5);` |
+| 51. | Calculate the sum of an array | `const sumArray = arr => arr.reduce((sum, num) => sum + num, 0);` |
+| 52. | Calculate the average of an array | `const averageArray = arr => sumArray(arr) / arr.length;` |
+| 53. | Find the median of an array | `const median = arr => { const sorted = [...arr].sort((a, b) => a - b); const mid = Math.floor(sorted.length / 2); return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid]; };` |
+| 54. | Find the mode of an array | `const mode = arr => { const freq = {}; arr.forEach(num => (freq[num] = (freq[num] || 0) + 1)); const maxFreq = Math.max(...Object.values(freq)); return Object.keys(freq).filter(key => freq[key] === maxFreq); };` |
+| 55. | Flatten a deeply nested array | `const deepFlatten = arr => arr.reduce((acc, val) => acc.concat(Array.isArray(val) ? deepFlatten(val) : val), []);` |
+| 56. | Remove duplicates in a nested array | `const uniqueNested = arr => deepFlatten(arr).filter((val, i, self) => self.indexOf(val) === i);` |
+| 57. | Convert a string to camel case | `const toCamelCase = str => str.replace(/([-_][a-z])/gi, group => group.toUpperCase().replace('-', '').replace('_', ''));` |
+| 58. | Convert a string to kebab case | `const toKebabCase = str => str.replace(/\s+/g, '-').toLowerCase();` |
+| 59. | Convert a string to snake case | `const toSnakeCase = str => str.replace(/\s+/g, '_').toLowerCase();` |
+| 60. | Get the first `n` elements of an array | `const firstN = (arr, n) => arr.slice(0, n);` |
+| 61. | Get the last `n` elements of an array | `const lastN = (arr, n) => arr.slice(-n);` |
+| 62. | Count occurrences of a value in an array | `const countOccurrences = (arr, val) => arr.reduce((count, el) => (el === val ? count + 1 : count), 0);` |
+| 63. | Find the longest word in a string | `const longestWord = str => str.split(' ').reduce((longest, word) => (word.length > longest.length ? word : longest), '');` |
+| 64. | Reverse a string | `const reverseString = str => str.split('').reverse().join('');` |
+| 65. | Capitalize the first letter of each word in a string | `const capitalizeWords = str => str.replace(/\b\w/g, char => char.toUpperCase());` |
+| 66. | Remove falsy values from an array | `const removeFalsy = arr => arr.filter(Boolean);` |
+| 67. | Find unique values in two arrays | `const uniqueValues = (arr1, arr2) => [...new Set([...arr1, ...arr2])];` |
+| 68. | Find common values in two arrays | `const commonValues = (arr1, arr2) => arr1.filter(val => arr2.includes(val));` |
+| 69. | Generate a random hexadecimal color code | `const randomHexColor = () => '#' + Math.floor(Math.random() * 16777215).toString(16);` |
+| 70. | Generate an array of `n` random numbers within a range | `const randomArray = (n, min, max) => Array.from({ length: n }, () => randomInRange(min, max));` |
+| 71. | Convert a string to title case | `const toTitleCase = str => str.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());` |
+| 72. | Check if an array is sorted | `const isSorted = arr => arr.every((val, i, a) => !i || a[i - 1] <= val);` |
+| 73. | Convert an object to an array of key-value pairs | `const objectToArray = obj => Object.entries(obj);` |
+| 74. | Convert an array of key-value pairs to an object | `const arrayToObject = arr => Object.fromEntries(arr);` |
+| 75. | Check if an object is empty | `const isEmptyObject = obj => Object.keys(obj).length === 0;` |
+| 76. | Deep clone an object or array | `const deepClone = obj => JSON.parse(JSON.stringify(obj));` |
+| 77. | Merge two objects | `const mergeObjects = (obj1, obj2) => ({ ...obj1, ...obj2 });` |
+| 78. | Find the intersection of multiple arrays | `const intersectArrays = (...arrays) => arrays.reduce((acc, arr) => acc.filter(val => arr.includes(val)));` |
+| 79. | Find the union of multiple arrays | `const unionArrays = (...arrays) => [...new Set(arrays.flat())];` |
+| 80. | Get the difference between two arrays | `const difference = (arr1, arr2) => arr1.filter(val => !arr2.includes(val));` |
+| 81. | Check if a string contains a specific substring | `const containsSubstring = (str, sub) => str.includes(sub);` |
+| 82. | Get the average of numbers in an array | `const average = arr => arr.reduce((sum, num) => sum + num, 0) / arr.length;` |
+| 83. | Remove leading and trailing whitespace from a string | `const trimWhitespace = str => str.trim();` |
+| 84. | Check if a string starts with a given substring | `const startsWith = (str, prefix) => str.startsWith(prefix);` |
+| 85. | Check if a string ends with a given substring | `const endsWith = (str, suffix) => str.endsWith(suffix);` |
+| 86. | Remove a specific element from an array | `const removeElement = (arr, elem) => arr.filter(item => item !== elem);` |
+| 87. | Create a deep comparison between two objects | `const deepEqual = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2);` |
+| 88. | Flatten an array of arrays | `const flattenArray = arr => arr.flat();` |
+| 89. | Check if a number is prime | `const isPrime = num => num > 1 && [...Array(num).keys()].slice(2).every(i => num % i !== 0);` |
+| 90. | Create a debounced function | `const debounce = (func, delay) => { let timeout; return (...args) => { clearTimeout(timeout); timeout = setTimeout(() => func(...args), delay); }; };` |
+| 91. | Create a throttled function | `const throttle = (func, limit) => { let lastFunc; let lastRan; return (...args) => { if (!lastRan) { func(...args); lastRan = Date.now(); } else { clearTimeout(lastFunc); lastFunc = setTimeout(() => { if (Date.now() - lastRan >= limit) { func(...args); lastRan = Date.now(); } }, limit - (Date.now() - lastRan)); } }; };` |
+| 92. | Find the maximum value in an array | `const maxValue = arr => Math.max(...arr);` |
+| 93. | Find the minimum value in an array | `const minValue = arr => Math.min(...arr);` |
+| 94. | Generate a random string of a specified length | `const randomString = len => Array(len).fill().map(() => String.fromCharCode(Math.floor(Math.random() * 26) + 97)).join('');` |
+| 95. | Check if an array contains a specific value | `const includesValue = (arr, value) => arr.includes(value);` |
+| 96. | Create a unique identifier (UUID) | `const generateUUID = () => ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));` |
+| 97. | Get the query string from a URL | `const getQueryString = url => new URL(url).search;` |
+| 98. | Get a specific query parameter value from a URL | `const getQueryParam = (url, param) => new URL(url).searchParams.get(param);` |
+| 99. | Convert a query string to an object | `const queryToObject = query => Object.fromEntries(new URLSearchParams(query));` |
+| 100. | Convert an object to a query string | `const objectToQuery = obj => new URLSearchParams(obj).toString();` |
